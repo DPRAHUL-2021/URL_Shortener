@@ -1,0 +1,17 @@
+{
+  "name": "url_shortener",
+  "version": "1.0.0",
+  "description": "This is a URL Shortener",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.2",
+    "mongoose": "^8.9.0",
+    "nano-id": "^1.1.0",
+    "nanoid": "^5.0.9"
+  }
+}
