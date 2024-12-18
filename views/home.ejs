@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <style>
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+        color: #333;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        color: #ee4a3b;
+        margin-bottom: 30px;
+        text-align: center;
+        /* text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2); */
+        /* letter-spacing: 2px;s */
+      }
+
+      .url-container {
+        background: #ffffff;
+        padding: 30px 40px;
+        border-radius: 16px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        text-align: center;
+        width: 90%;
+        max-width: 600px;
+        margin-bottom: 30px;
+      }
+
+      label {
+        font-size: 1.1rem;
+        color: #ff6f61;
+        font-weight: 600;
+        display: block;
+        margin-bottom: 15px;
+      }
+
+      input[type="text"] {
+        width: 100%;
+        padding: 12px 20px;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        outline: none;
+        transition: all 0.3s ease;
+        box-sizing: border-box;
+      }
+
+      input[type="text"]:focus {
+        border-color: #ff6f61;
+        box-shadow: 0 0 8px rgba(255, 111, 97, 0.6);
+      }
+
+      button {
+        background: #ff6f61;
+        color: #fff;
+        padding: 12px 25px;
+        border: none;
+        border-radius: 10px;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: background 0.3s, transform 0.2s ease-in-out;
+        box-sizing: border-box;
+      }
+
+      button:hover {
+        background: #e65c55;
+        transform: scale(1.05);
+      }
+
+      .generated-url {
+        margin-top: 20px;
+        font-size: 1.3rem;
+        font-weight: 600;
+        color: #ff6f61;
+        letter-spacing: 0.5px;
+      }
+
+      .generated-url a {
+        color: #3498db;
+        text-decoration: none;
+        font-weight: bold;
+        transition: color 0.3s ease;
+      }
+
+      .generated-url a:hover {
+        color: #e65c55;
+        text-decoration: underline;
+      }
+    </style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL Shortener</title>
+  </head>
+  <body>
+    <h1>URL Shortener</h1>
+    <div class="url-container">
+      <form method="POST" action="/url">
+        <label for="url-input">Enter Your Original URL</label>
+        <input
+          type="text"
+          id="url-input"
+          name="url"
+          placeholder="https://www.example.com"
+          required
+        />
+        <button type="submit">Generate</button>
+      </form>
+      <% if (locals.id) { %>
+        <p class="generated-url">
+          Generated URL: <a href="http://localhost:8000/url/<%= id %>" target="_blank">
+            http://localhost:8000/url/<%= id %>
+          </a>
+        </p>
+        <% } %>
+    </div>
+  </body>
+</html>
