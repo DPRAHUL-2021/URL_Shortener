@@ -13,6 +13,7 @@ async function generateShortURL(req,res){
         shortID:shortId,
         redirectURL:body.url,
         clickHistory : [],
+        createdBy : req.user._id,
     });
 
     return res.render("home",{

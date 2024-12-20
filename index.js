@@ -3,6 +3,8 @@ const app = express();
 const PORT = 8000;
 const path = require("path");
 const URL = require("./models/url")
+const cookieParser = require("cookie-parser");
+const {checkingUserLoggedInOrNot,checkAuth} = require('./middlewares/auth');
 
 const URLRoute = require("./routes/url");
 const staticRoute = require("./routes/staticRouter");
@@ -20,10 +22,11 @@ app.set("views", path.resolve("./views"));
 // Middleware so that the body is parsed in PostMan
 app.use(express.json());
 app.use(express.urlencoded({extended:false}));
+app.use(cookieParser());
 
 // Routers
-app.use("/url",URLRoute);
-app.use("/",staticRoute);
+app.use("/url",checkingUserLoggedInOrNot,URLRoute);
+app.use("/",checkAuth,staticRoute);
 app.use("/user",userRoute);
 
 

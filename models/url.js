@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 
-const URLSchema = mongoose.Schema({
+const URLSchema = new mongoose.Schema({
     shortID:{
         type:String,
         required:true,
@@ -10,7 +10,11 @@ const URLSchema = mongoose.Schema({
         type:String,
         required:true,
     },
-    clickHistory:[{timestamp : {type:Number}}]
+    clickHistory:[{timestamp : {type:Number}}],
+    createdBy:{
+        type:mongoose.Schema.Types.ObjectId,
+        ref:"users",
+    }
 } , {timestamps : true});
 
 const URL = mongoose.model("url",URLSchema)
